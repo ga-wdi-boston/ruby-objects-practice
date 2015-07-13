@@ -3,6 +3,7 @@
 #
 # Author: Charles Li
 
+require('pry')
 
 def calculateStops(startLine, endLine, startStop, endStop)
   redStops = {"south station" => 0, "park st" => 1, "kendall" => 2, "central" => 3, "harvard" => 4, "porter" => 5, "davis" => 6, "alewife" => 7}
@@ -54,6 +55,11 @@ def testing()
     else
         puts "Test failed"
     end
+    puts
+    puts "User can run more tests directly with pry (loading now)"
 end
 
 testing()
+
+binding.pry
+""
