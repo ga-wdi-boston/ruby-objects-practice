@@ -1,0 +1,24 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/home/nicolas/.nvm/versions/node/v4.4.0/bin/node',
+1 verbose cli   '/home/nicolas/.nvm/versions/node/v4.4.0/bin/npm',
+1 verbose cli   'install' ]
+2 info using npm@2.14.20
+3 info using node@v4.4.0
+4 verbose config Skipping project config: /home/nicolas/.npmrc. (matches userconfig)
+5 verbose readDependencies loading dependencies from /home/nicolas/package.json
+6 error install Couldn't read dependencies
+7 verbose stack Error: ENOENT: no such file or directory, open '/home/nicolas/package.json'
+7 verbose stack     at Error (native)
+8 verbose cwd /home/nicolas/wdi/practice/ruby-objects-practice
+9 error Linux 3.19.0-58-generic
+10 error argv "/home/nicolas/.nvm/versions/node/v4.4.0/bin/node" "/home/nicolas/.nvm/versions/node/v4.4.0/bin/npm" "install"
+11 error node v4.4.0
+12 error npm  v2.14.20
+13 error path /home/nicolas/package.json
+14 error code ENOPACKAGEJSON
+15 error errno -2
+16 error syscall open
+17 error package.json ENOENT: no such file or directory, open '/home/nicolas/package.json'
+17 error package.json This is most likely not a problem with npm itself.
+17 error package.json npm can't find a package.json file in your current directory.
+18 verbose exit [ -2, true ]
