@@ -24,18 +24,16 @@ module MBTA
         if line_a == line_b
           @lines[line_a].dist_on_line(station_a, station_b)
         else
-          xfr = nearest_xfr(line_a, station_a, line_b)
-          @lines[line_a].dist_on_line(station_a, xfr) +
-            @lines[line_b].dist_on_line(station_b, xfr)
+          @lines[line_a].xfr_stns(@lines[line_b]).map do |xfr_stn|
+            route_len_w_xfr(line_a, station_a, xfr_stn, line_b, station_b)
+          end.min
         end
       end
 
-      # Returns the nearest connection point between two lines
-      def nearest_xfr(line_a, station, line_b)
-        # 'Park Street'
-        @lines[line_a].xfr_stns(@lines[line_b]).min_by do |xfr_stn|
-          @lines[line_a].dist_on_line(station, xfr_stn)
-        end
+      # Returns length of a route between two lines with a given transfer point
+      def route_len_w_xfr(line_a, station_a, xfr_stn, line_b, station_b)
+        @lines[line_a].dist_on_line(station_a, xfr_stn) +
+          @lines[line_b].dist_on_line(xfr_stn, station_b)
       end
 
       # return true if handling multiple intersections
@@ -44,23 +42,20 @@ module MBTA
       end
     end
     # One line, all the stations on that line
-    class Line
-      attr_reader :name, :stns
+    class Line < Array
+      attr_reader :name
 
       def initialize(name, *stns)
+        super(0)
         @name = name
-        @stns = stns.map do |stn|
+        replace(stns.map do |stn|
           Station.new(stn)
-        end
+        end)
       end
 
       # Returns the station's index on the line
       def stop_num(station)
-        @stns.index(station)
-      end
-
-      def include?(station)
-        @stns.include?(station)
+        index(station)
       end
 
       # Returns distance between two stops on a line
@@ -76,7 +71,7 @@ module MBTA
 
       # Returns an array of transfers to the other line
       def xfr_stns(other_line)
-        @stns.select do |stn_i|
+        select do |stn_i|
           xfr?(stn_i, other_line)
         end
       end
