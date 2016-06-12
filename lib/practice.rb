@@ -14,7 +14,8 @@ class System
   end
 
   def stops_between_stations(startStation, stopStation)
-    stops =
+    stops = self.get_red_line.index(startStation) - self.get_red_line.index(stopStation)
+    return stops
   end
 
   # return true if handling multiple intersections
