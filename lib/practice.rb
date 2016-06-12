@@ -3,11 +3,12 @@ module MBTA
   module Subway
     # All of the subway lines
     class System
+      @intersections = ['Park Street', 'Haymarket']
       def initialize
         @red = ['South Station', 'Park Street', 'Kendall',
                 'Central', 'Harvard', 'Porter', 'Davis', 'Alewife']
-        @green = ['Government Center', 'Park Street', 'Boylston', 'Arlington',
-                  'Copley', 'Hynes', 'Kenmore']
+        @green = ['Haymarket', 'Government Center', 'Park Street', 'Boylston',
+                  'Arlington', 'Copley', 'Hynes', 'Kenmore']
         @orange = ['North Station', 'Haymarket', 'Park Street', 'State',
                    'Downtown Crossing', 'Chinatown', 'Back Bay', 'Forest Hills']
         @translator = { 'Red' => @red,
@@ -20,10 +21,10 @@ module MBTA
         (line.index(start_station) - line.index(stop_station)).abs
       end
 
-      def two_line_dist(start_line,
-                        start_station,
-                        stop_line,
-                        stop_station)
+      def two_line(start_line,
+                   start_station,
+                   stop_line,
+                   stop_station)
         first_distance = (start_line.index(start_station) -
         start_line.index(@intersections[0])).abs
         second_distance = (stop_line.index(stop_station) -
@@ -31,23 +32,23 @@ module MBTA
         first_distance + second_distance
       end
 
-      def stops_between_stations(start_line, start_station,
-                                 stop_line, stop_station)
-        start_line = @translator[start_line]
-        stop_line = @translator[stop_line]
+      def stops_between_stations(start, start_station, stop, stop_station)
+        start_line = @translator[start]
+        stop_line = @translator[stop]
         if start_line == stop_line
-          distance = single_line_dist(start_line, start_station, stop_station)
+          dist = single_line_dist(start_line, start_station, stop_station)
+        elsif self.class.stretch == false
+          dist = two_line(start_line, start_station, stop_line, stop_station)
         else
-          distance = two_line_dist(start_line, start_station,
-                                   stop_line, stop_station)
+          dist = two_line(start_line, start_station, stop_line, stop_station)
         end
-        distance
+        dist
       end
 
       # return true if handling multiple intersections
       def self.stretch
-        # return false if @intersections.length == 1
-        # true
+        return false if @intersections.length == 1
+        true
       end
     end
     # One line, all the stations on that line
