@@ -5,7 +5,11 @@ require_relative './practice'
 my_mbta = MBTA::Subway::System.new
 p my_mbta
 
-distance_one = my_mbta.stops_between_stations('Green', 'Park Street',
+park_alewife = my_mbta.stops_between_stations('Green', 'Park Street',
                                               'Red', 'Alewife')
 
-p "Park Street to Alewife (6): #{distance_one}"
+haymarket_north = my_mbta.stops_between_stations('Green', 'Haymarket',
+                                                 'Orange', 'North Station')
+
+p "Park Street to Alewife (6): #{park_alewife}"
+p "Haymarket to North Station (1): #{haymarket_north}"
