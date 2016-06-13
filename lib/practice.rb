@@ -14,8 +14,8 @@ class System
   end
 
   def stops_between_stations(startStation, stopStation)
-    stops = self.get_red_line.index(startStation) - self.get_red_line.index(stopStation)
-    return stops
+    stops = self.get_red_line.index(startStation.get_line) - self.get_red_line.index(stopStation.get_line)
+    puts "Number of stops between stations is #{stops}"
   end
 
   # return true if handling multiple intersections
@@ -34,6 +34,15 @@ class Line
 end
 # One station
 class Station
+  def initialize(station)
+    @station = station
+  end
+
+  def get_line
+    @station
+  end
 end
+
+
 #   end
 # end
