@@ -56,11 +56,12 @@ module MBTA
         end
 
         if starting != ending
-          start_to_park = (starting.index(s_station) - starting.index('Park
-          Street')).abs
-          end_to_park = (ending.index(e_station) -
-          ending.index('Park Street')).abs
-          total_stops = start_to_park + end_to_park
+          park_street = 'Park Street'
+          start_to_park = (starting.index(s_station) -
+          starting.index(park_street)).abs
+          park_to_end = (ending.index(park_street) -
+          ending.index(e_station)).abs
+          total_stops = start_to_park + park_to_end
           return total_stops
         end
       end
