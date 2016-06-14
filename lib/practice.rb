@@ -11,7 +11,6 @@ class System
     @orange = ['North Station', 'Haymarket', 'Park Street','State', 'Downtown Crossing', 'Chinatown', 'Back Bay', 'Forest Hills']
   end
 
-  # def stops_between_stations(startStation, startLine, stopStation, stopLine)
   def stops_between_stations(startStation, startLine, stopStation, stopLine)
     start_line = return_line(startLine)
     stop_line = return_line(stopLine)
@@ -34,6 +33,7 @@ class System
       return @orange
     end
   end
+
 end
 # One line, all the stations on that line
 # class Line
@@ -57,4 +57,4 @@ end
 # end
 
 mbta = System.new
-mbta.stops_between_stations("North Station","Orange Line","Alewife","Red Line")
+mbta.stops_between_stations("South Station","Red Line","Back Bay","Orange Line")
