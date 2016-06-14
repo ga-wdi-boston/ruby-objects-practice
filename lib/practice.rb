@@ -6,20 +6,22 @@ require 'pry'
 # All of the subway lines
 class System
   def initialize
-    @red_line = ['South Station', 'Park Street', 'Kendall']
+    @red = ['South Station', 'Park Street', 'Kendall']
   end
 
-  def get_red_line
-    @red_line
+  # def stops_between_stations(startStation, startLine, stopStation, stopLine)
+  def stops_between_stations(startLine,stopLine)
+  start_line = return_line(startLine)
+  stop_line = return_line(stopLine)
+  
+    # start_index = get_station(startStation).index(stopStation.get_line)
   end
 
-  def stops_between_stations(startStation, stopStation)
-    stops = self.get_red_line.index(startStation.get_line) - self.get_red_line.index(stopStation.get_line)
-    puts "Number of stops between stations is #{stops}"
-  end
 
-  # return true if handling multiple intersections
-  def self.stretch
+  def return_line(station)
+    if station == 'Red Line'
+      return @red
+    end
   end
 end
 # One line, all the stations on that line
@@ -38,11 +40,10 @@ class Station
     @station = station
   end
 
-  def get_line
+  def get_station
     @station
   end
 end
 
-
-#   end
-# end
+mbta = System.new
+mbta.stops_between_stations("Red Line","Red Line")
