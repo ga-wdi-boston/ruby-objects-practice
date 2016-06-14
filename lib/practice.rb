@@ -14,13 +14,14 @@ class System
   def stops_between_stations(startStation, startLine, stopStation, stopLine)
     start_line = return_line(startLine)
     stop_line = return_line(stopLine)
-
     if start_line == stop_line
-    stops = start_line.index(startStation) - start_line.index(stopStation)
+    stops = (start_line.index(startStation) - start_line.index(stopStation)).abs
     else
-
+    first_line_stops = (start_line.index(startStation) - start_line.index("Park Street")).abs
+    second_line_stops = (stop_line.index("Park Street") - stop_line.index(stopStation)).abs
+    stops = first_line_stops + second_line_stops
     end
-    puts stops
+    puts "There are #{stops} stops between these stations"
   end
 
   def return_line(station)
@@ -53,4 +54,4 @@ end
 # end
 
 mbta = System.new
-mbta.stops_between_stations("Kendall","Red Line","Park Street","Red Line")
+mbta.stops_between_stations("Government Center","Green Line","Kendall","Red Line")
