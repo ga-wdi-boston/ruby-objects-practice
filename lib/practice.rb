@@ -6,8 +6,9 @@ require 'pry'
 # All of the subway lines
 class System
   def initialize
-    @red = ['South Station', 'Park Street', 'Kendall']
-    @green = ['Government Center', 'Park Street', 'Boylston']
+    @red = ['South Station', 'Park Street', 'Kendall', 'Central', 'Harvard', 'Porter', 'Davis', 'Alewife']
+    @green = ['Government Center', 'Park Street', 'Boylston','Arlington', 'Copley', 'Hynes', 'Kenmore']
+    @orange = ['North Station', 'Haymarket', 'Park Street','State', 'Downtown Crossing', 'Chinatown', 'Back Bay', 'Forest Hills']
   end
 
   # def stops_between_stations(startStation, startLine, stopStation, stopLine)
@@ -29,6 +30,8 @@ class System
       return @red
     elsif station == 'Green Line'
       return @green
+    elsif station == 'Orange Line'
+      return @orange
     end
   end
 end
@@ -54,4 +57,4 @@ end
 # end
 
 mbta = System.new
-mbta.stops_between_stations("Government Center","Green Line","Kendall","Red Line")
+mbta.stops_between_stations("North Station","Orange Line","Alewife","Red Line")
