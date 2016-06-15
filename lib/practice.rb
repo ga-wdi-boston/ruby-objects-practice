@@ -7,6 +7,8 @@
 
     class System
       @@subway = []
+      attr_accessor :subway_lines
+      attr_reader :city
 
       def initialize(city)
         @city = city
@@ -15,12 +17,21 @@
       end
 
       def stops_between_stations(start_line,start_station,end_line,end_station)
+        start_position = subway_lines.select { |line| line.color == start_line }[0].stations.select { |stops| stops.station== start_station}[0].position
+        park_from_start = subway_lines.select { |line| line.color == start_line}[0].stations.select { |stops| stops.station=='Park Street'}[0].position
+        start_distance = (start_position - park_from_start).abs
+        end_position = subway_lines.select { |line| line.color == end_line }[0].stations.select { |stops| stops.station== end_station}[0].position
+        park_from_end = subway_lines.select { |line| line.color == end_line}[0].stations.select { |stops| stops.station=='Park Street'}[0].position
+        end_distance = (end_position - park_from_end).abs
+        total_distance = start_distance + end_distance
+
+        p "The total stops between #{start_station} and #{end_station} stations is #{total_distance} stops"
 
       end
 
       # return true if handling multiple intersections
       def self.stretch
-        @@subway
+       p  @@subway
       end
     end
 
@@ -55,7 +66,7 @@
 
 mbta = System.new("Boston")
 
-red_line = Line.new("Red")
+red_line = Line.new("red")
 mbta.subway_lines<<red_line
 red_line.stations<<Station.new(position:0,station:"South Station")
 red_line.stations<<Station.new(position:1,station:"Park Street")
@@ -66,7 +77,8 @@ red_line.stations<<Station.new(position:5,station:"Porter")
 red_line.stations<<Station.new(position:6,station:"Davis")
 red_line.stations<<Station.new(position:7,station:"Alewife")
 
-green_line = Line.new("Green")
+green_line = Line.new("green")
+mbta.subway_lines<<green_line
 green_line.stations<<Station.new(position:0,station:"Government Center")
 green_line.stations<<Station.new(position:1,station:"Park Street")
 green_line.stations<<Station.new(position:2,station:"Boylston")
@@ -75,7 +87,8 @@ green_line.stations<<Station.new(position:4,station:"Copley")
 green_line.stations<<Station.new(position:5,station:"Hynes")
 green_line.stations<<Station.new(position:6,station:"Kenmore")
 
-orange_line = Line.new("Orange")
+orange_line = Line.new("orange")
+mbta.subway_lines<<orange_line
 orange_line.stations<<Station.new(position:0,station:"North Station")
 orange_line.stations<<Station.new(position:1,station:"Haymarket")
 orange_line.stations<<Station.new(position:2,station:"Park Street")
@@ -85,9 +98,7 @@ orange_line.stations<<Station.new(position:5,station:"Chinatown")
 orange_line.stations<<Station.new(position:6,station:"Back Bay")
 orange_line.stations<<Station.new(position:7,station:"Forest Hills")
 
+mbta.stops_between_stations('red','Central','green','Copley')
 
-start_station = red_line.stations.select { |stops| stops.station=='Central'}[0].position
-p start_station
-p mbta
-# p orange_line
-# p green_line
+
+# mbta.subway_lines.select { |line| line.color == "red"}[0].stations.select { |stops| stops.station=='Central'}[0].position
