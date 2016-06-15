@@ -10,7 +10,7 @@
 
       def initialize(city)
         @city = city
-        @lines = []
+        @subway_lines = []
         @@subway<<self
       end
 
@@ -20,6 +20,7 @@
 
       # return true if handling multiple intersections
       def self.stretch
+        @@subway
       end
     end
 
@@ -55,6 +56,7 @@
 mbta = System.new("Boston")
 
 red_line = Line.new("Red")
+mbta.subway_lines<<red_line
 red_line.stations<<Station.new(position:0,station:"South Station")
 red_line.stations<<Station.new(position:1,station:"Park Street")
 red_line.stations<<Station.new(position:2,station:"Kendall")
@@ -86,5 +88,6 @@ orange_line.stations<<Station.new(position:7,station:"Forest Hills")
 
 start_station = red_line.stations.select { |stops| stops.station=='Central'}[0].position
 p start_station
+p mbta
 # p orange_line
 # p green_line
