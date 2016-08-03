@@ -4,7 +4,7 @@
 
 ## To start
 
-Fork, clone, branch (practice) and npm install
+Fork, clone, branch (practice) and bundle install
 
 ## Objectives
 
