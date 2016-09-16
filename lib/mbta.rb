@@ -33,3 +33,5 @@ green_line = Line.new([government_center, park_street, boylston, arlington, copl
 orange_line = Line.new([north_station, haymarket, park_street, state, downtown_crossing, chinatown, back_bay, ruggles, forest_hills])
 
 mbta = System.new([red_line, green_line, orange_line])
+
+mbta.stops_between_stations('south station', 'kendall')
