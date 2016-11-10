@@ -9,7 +9,7 @@ Fork, clone, branch (practice) and bundle install
 ## Objectives
 
 -   Practice with classes, methods, and collections.
--   You may submit a pull request for this practice, but it is not required.
+-   You should submit a pull request for this practice, but it is not required.
 
 ## Activity
 
