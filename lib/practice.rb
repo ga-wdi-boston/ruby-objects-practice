@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # A namespace
 module MBTA
   module Subway

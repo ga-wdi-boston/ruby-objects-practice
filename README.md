@@ -1,4 +1,4 @@
-![General Assembly Logo](http://i.imgur.com/ke8USTq.png)
+[![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
 
 # MBTA practice
 
@@ -35,7 +35,7 @@ Park Street, State, Downtown Crossing, Chinatown, Back Bay, Forest Hills
 
 ## Checking your solution
 
-Run `rake test`.
+Run `bin/rake test`.
 
 ## Hints
 
@@ -54,6 +54,14 @@ Think about adding Haymarket before Government Center on the Green line then try
 Is there a way to decide if a particular solution is "correct"?
 
 This bonus is completely optional and does not have tests, yet.
+
+## Tasks
+
+Developers should run these often!
+
+-   `bin/rake nag`  (or `bundle exec rake test`):
+    runs code quality analysis tools on your code and complains.
+-   `bin/rake test` (or `bundle exec rake test`): runs automated tests
 
 ## [License](LICENSE)
 
