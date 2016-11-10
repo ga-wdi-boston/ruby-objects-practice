@@ -40,11 +40,12 @@ Run `bin/rake test`.
 ## Hints
 
 -   Assume good input.  Your function need not check the validity of the line or
- stop name.
+    stop name.
+-   Think about where to store initialization data.
 -   Consider diagramming the lines by sketching out the subway lines and their
- stops and intersection.
+    stops and intersection.
 -   The key to the practice is to find the **intersection** of the lines at
- *Park Street*.
+    *Park Street*.
 -   Solve an easier problem first.
 
 ## Bonus
