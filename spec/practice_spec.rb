@@ -76,9 +76,12 @@ RSpec.describe MBTA::Subway::System do
                                           'Green', 'Kenmore')).to eq(7)
     end
   end
-
   if MBTA::Subway::System.stretch
-    describe 'Green and Orange Lines' do
+    describe 'Green and Orange Lines With Bonus' do
+      it 'goes from "Government Center" to "North Station"' do
+        expect(@mbta.stops_between_stations('Green', 'Government Center',
+                                            'Orange', 'North Station')).to eq(2)
+      end
     end
   end
 end
