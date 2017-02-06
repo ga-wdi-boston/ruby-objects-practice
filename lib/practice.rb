@@ -4,17 +4,17 @@ module MBTA
   module Subway
     # All of the subway lines
     class System
-      # attr_reader :lines
-      LINES = [ Line.new('Green', ['Government Center', 'Park Street', 'Boylston', 'Arlington', 'Copley', 'Hynes', 'Kenmore']),
-      Line.new('Red', ['South Station', 'Park Street', 'Kendall', 'Central', 'Harvard', 'Porter', 'Davis', 'Alewife']),
-      Line.new('Orange', ['North Station', 'Haymarket', 'Park Street', 'State', 'Downtown Crossing', 'Chinatown', 'Back Bay', 'Forest Hills'])].map(&:freeze)
+      attr_reader :lines
       # LINES = [].map(&:freeze)
       def initialize
+        @lines = [ Line.new('Green', ['Government Center', 'Park Street', 'Boylston', 'Arlington', 'Copley', 'Hynes', 'Kenmore']),
+        Line.new('Red', ['South Station', 'Park Street', 'Kendall', 'Central', 'Harvard', 'Porter', 'Davis', 'Alewife']),
+        Line.new('Orange', ['North Station', 'Haymarket', 'Park Street', 'State', 'Downtown Crossing', 'Chinatown', 'Back Bay', 'Forest Hills'])]
       end
 
       def stops_between_stations(initial_line, initial_stop, final_line, final_stop)
-        init = LINES.find { |line| line.name == initial_line }
-        final = LINES.find { |line| line.name == final_line }
+        init = lines.find { |line| line.name == initial_line }
+        final = lines.find { |line| line.name == final_line }
         if initial_line == final_line
           init.stops_calc(initial_stop, final_stop)
         else
