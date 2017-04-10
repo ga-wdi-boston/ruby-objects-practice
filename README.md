@@ -62,7 +62,7 @@ Developers should run these often!
 
 -   `bin/rake nag`  (or `bundle exec rake nag`):
     runs code quality analysis tools on your code and complains.
--   `bin/rake test` (or `bundle exec rake test`): runs automated tests
+-   `bin/rake test` (or `bundle exec rake test`): runs automated tests.
 -   `bin/rake` will run both `nag` and `test`
 
 ## [License](LICENSE)
