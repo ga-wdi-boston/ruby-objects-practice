@@ -16,6 +16,9 @@ module MBTA
     end
     # One line, all the stations on that line
     class Line
+      red = [South Station, Park Street, Kendall, Central, Harvard, Porter, Davis, Alewife]
+      green = [Government Center, Park Street, Boylston, Arlington, Copley, Hynes, Kenmore]
+      orange = [North Station, Haymarket, Park Street, State, Downtown Crossing, Chinatown, Back Bay, Forest Hills]
     end
     # One station
     class Station
