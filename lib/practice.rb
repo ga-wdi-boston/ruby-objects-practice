@@ -57,22 +57,23 @@ module MBTA
     }
 
       def stops_between_stations
-        # if is_same_line
-        #
-        # end
+        if is_same_line
+          same_line_calc
+        else
+          intersection_calc
+        end
       end
 
       def my_subway_info
+        p "is_same_line is #{is_same_line}"
         p "start is #{@start_line}: #{@start_station}"
-        p "end is #{@stop_line}: #{@stop_station}"
-        num_stops = Subway_lines[:"#{@start_line}"].length
-        p "number of stops for this line: #{num_stops}"
+        p "last is #{@stop_line}: #{@stop_station}"
+        start_num_stops = Subway_lines[:"#{@start_line}"].length
+        p "number of stops for start line: #{start_num_stops}"
+        last_num_stops = Subway_lines[:"#{@stop_line}"].length
+        p "number of stops for start line: #{last_num_stops}"
 
-        first_stop_pos = Subway_lines[:"#{@start_line}"].index("#{@start_station}")
-        p "first stop is @ #{first_stop_pos}"
 
-        last_stop_pos = Subway_lines[:"#{@stop_line}"].index("#{@stop_station}")
-        p "last stop is @ #{last_stop_pos}"
       end
 
       # return true if the start and stop line are the same
@@ -87,17 +88,24 @@ module MBTA
       # def self.stretch
       # end
 
-      # finds number of station stops from start of line to intersection
-      # this is for start/stop lines that are not the same
+      # finds num of stops from start stop to intersection
+      # and then finds the num of stops from intersection to last stop
+      # for multiple lines scenario
       def intersection_calc
-        int_first = Subway_lines[:"#{@start_line}"].index("Park Street") - Subway_lines[:"#{@start_line}"].index("#{@start_station}")
-        int_second = Subway_lines[:"#{@stop_line}"].index("#{@stop_station}") - Subway_lines[:"#{@stop_line}"].index("Park Street")
-        total_stops = int_first + int_second
+        int_first = (Subway_lines[:"#{@start_line}"].index("Park Street") -
+        Subway_lines[:"#{@start_line}"].index("#{@start_station}")).abs
+        p "int_first is #{int_first}"
+        int_second = (Subway_lines[:"#{@stop_line}"].index("#{@stop_station}") -
+        Subway_lines[:"#{@stop_line}"].index("Park Street")).abs
+        p "int_second is #{int_second}"
+        total_stops = (int_first + int_second).abs
+        p "Total number of stops for your trip is: #{total_stops}"
       end
 
-      # finds number of station stops from intersection to end of line
-      # this is for start/stop lines that are not the same
-      def int_to_end
+      def same_line_calc
+        total_stops = (Subway_lines[:"#{@stop_line}"].index("#{@stop_station}") -
+        Subway_lines[:"#{@start_line}"].index("#{@start_station}")).abs
+        p "Total number of stops for your trip is: #{total_stops}"
       end
 
     end
