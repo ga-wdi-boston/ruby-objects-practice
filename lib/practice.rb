@@ -59,6 +59,14 @@ module MBTA
       def stops_between_stations
       end
 
+      # return true if the start and stop line are the same
+      def is_same_line
+        if start_line == stop_line
+          return true
+        else return false
+        end
+      end
+
       # return true if handling multiple intersections
       # def self.stretch
       # end
