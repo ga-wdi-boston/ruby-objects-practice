@@ -1,7 +1,16 @@
 # frozen_string_literal: true
 # A namespace
+
+# Red line: 8 stops - South Station, Park Street, Kendall, Central, Harvard, Porter, Davis, Alewife
+# Green line: 7 stops - Government Center, Park Street, Boylston, Arlington, Copley, Hynes, Kenmore
+# Orange line: 8 stops - North Station, Haymarket, Park Street, State, Downtown Crossing, Chinatown, Back Bay, Forest Hills
+
+# Input from user: start line, start station, end line, end station
+
 module MBTA
+
   module Subway
+
     # All of the subway lines
     class System
       def initialize
@@ -14,11 +23,14 @@ module MBTA
       def self.stretch
       end
     end
+
     # One line, all the stations on that line
     class Line
     end
+
     # One station
     class Station
     end
+
   end
 end
