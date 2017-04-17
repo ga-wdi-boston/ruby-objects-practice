@@ -13,15 +13,61 @@ module MBTA
 
     # All of the subway lines
     class System
-      def initialize
+      attr_reader :start_line, :start_station, :stop_line, :stop_station
+
+      def initialize(start_line, start_station, stop_line, stop_station)
+        @start_line = start_line
+        @start_station = start_station
+        @stop_line = stop_line
+        @stop_station = stop_station
       end
+
+    # Subway lines
+    subway_lines = {
+      :red_line_subway => {
+          :stations => [
+            'South Station',
+            'Park Street',
+            'Kendall',
+            'Central',
+            'Harvard',
+            'Porter',
+            'Davis',
+            'Alewife'
+          ]
+      },
+      :green_line_subway => {
+          :stations => [
+            'Government Center',
+            'Park Street',
+            'Boylston',
+            'Arlington',
+            'Copley',
+            'Hynes',
+            'Kenmore'
+        ]
+      },
+      :orange_line_subway => {
+          :stations => [
+            'North Station',
+            'Haymarket',
+            'Park Street',
+            'State',
+            'Downtown Crossing',
+            'Chinatown',
+            'Back Bay',
+            'Forest Hills'
+      ]
+      },
+      :intersection => 'Park Street'
+  }
 
       def stops_between_stations
       end
 
       # return true if handling multiple intersections
-      def self.stretch
-      end
+      # def self.stretch
+      # end
     end
 
     # One line, all the stations on that line
