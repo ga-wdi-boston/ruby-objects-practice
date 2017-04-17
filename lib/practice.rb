@@ -77,7 +77,7 @@ module MBTA
 
       # return true if the start and stop line are the same
       def is_same_line
-        if start_line == stop_line
+        if @start_line == @stop_line
           true
         else false
         end
@@ -89,8 +89,10 @@ module MBTA
 
       # finds number of station stops from start of line to intersection
       # this is for start/stop lines that are not the same
-      def start_to_int
-
+      def intersection_calc
+        int_first = Subway_lines[:"#{@start_line}"].index("Park Street") - Subway_lines[:"#{@start_line}"].index("#{@start_station}")
+        int_second = Subway_lines[:"#{@stop_line}"].index("#{@stop_station}") - Subway_lines[:"#{@stop_line}"].index("Park Street")
+        total_stops = int_first + int_second
       end
 
       # finds number of station stops from intersection to end of line
