@@ -24,43 +24,37 @@ module MBTA
 
     # Subway lines
     subway_lines = {
-      :red_line_subway => {
-          :stations => [
-            'South Station',
-            'Park Street',
-            'Kendall',
-            'Central',
-            'Harvard',
-            'Porter',
-            'Davis',
-            'Alewife'
-          ]
-      },
-      :green_line_subway => {
-          :stations => [
-            'Government Center',
-            'Park Street',
-            'Boylston',
-            'Arlington',
-            'Copley',
-            'Hynes',
-            'Kenmore'
-        ]
-      },
-      :orange_line_subway => {
-          :stations => [
-            'North Station',
-            'Haymarket',
-            'Park Street',
-            'State',
-            'Downtown Crossing',
-            'Chinatown',
-            'Back Bay',
-            'Forest Hills'
-      ]
-      },
+      :red_line => [
+        'South Station',
+        'Park Street',
+        'Kendall',
+        'Central',
+        'Harvard',
+        'Porter',
+        'Davis',
+        'Alewife'
+      ],
+      :green_line => [
+        'Government Center',
+        'Park Street',
+        'Boylston',
+        'Arlington',
+        'Copley',
+        'Hynes',
+        'Kenmore'
+      ],
+      :orange_line => [
+        'North Station',
+        'Haymarket',
+        'Park Street',
+        'State',
+        'Downtown Crossing',
+        'Chinatown',
+        'Back Bay',
+        'Forest Hills'
+      ],
       :intersection => 'Park Street'
-  }
+    }
 
       def stops_between_stations
       end
