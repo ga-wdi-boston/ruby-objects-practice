@@ -23,7 +23,7 @@ module MBTA
       end
 
     # Subway lines
-    subway_lines = {
+    Subway_lines = {
       :red_line => [
         'South Station',
         'Park Street',
@@ -57,20 +57,49 @@ module MBTA
     }
 
       def stops_between_stations
+        # if is_same_line
+        #
+        # end
+      end
+
+      def my_subway_info
+        p "start is #{@start_line}: #{@start_station}"
+        p "end is #{@stop_line}: #{@stop_station}"
+        num_stops = Subway_lines[:"#{@start_line}"].length
+        p "number of stops for this line: #{num_stops}"
+
+        first_stop_pos = Subway_lines[:"#{@start_line}"].index("#{@start_station}")
+        p "first stop is @ #{first_stop_pos}"
+
+        last_stop_pos = Subway_lines[:"#{@stop_line}"].index("#{@stop_station}")
+        p "last stop is @ #{last_stop_pos}"
       end
 
       # return true if the start and stop line are the same
       def is_same_line
         if start_line == stop_line
-          return true
-        else return false
+          true
+        else false
         end
       end
 
       # return true if handling multiple intersections
       # def self.stretch
       # end
+
+      # finds number of station stops from start of line to intersection
+      # this is for start/stop lines that are not the same
+      def start_to_int
+
+      end
+
+      # finds number of station stops from intersection to end of line
+      # this is for start/stop lines that are not the same
+      def int_to_end
+      end
+
     end
+################################
 
     # One line, all the stations on that line
     class Line
