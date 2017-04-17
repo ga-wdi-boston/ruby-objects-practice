@@ -65,13 +65,13 @@ module MBTA
       end
 
       def my_subway_info
-        p "is_same_line is #{is_same_line}"
-        p "start is #{@start_line}: #{@start_station}"
-        p "last is #{@stop_line}: #{@stop_station}"
-        start_num_stops = Subway_lines[:"#{@start_line}"].length
-        p "number of stops for start line: #{start_num_stops}"
-        last_num_stops = Subway_lines[:"#{@stop_line}"].length
-        p "number of stops for start line: #{last_num_stops}"
+        # p "is_same_line is #{is_same_line}"
+        # p "start is #{@start_line}: #{@start_station}"
+        # p "last is #{@stop_line}: #{@stop_station}"
+        # start_num_stops = Subway_lines[:"#{@start_line}"].length
+        # p "number of stops for start line: #{start_num_stops}"
+        # last_num_stops = Subway_lines[:"#{@stop_line}"].length
+        # p "number of stops for start line: #{last_num_stops}"
 
 
       end
@@ -94,10 +94,10 @@ module MBTA
       def intersection_calc
         int_first = (Subway_lines[:"#{@start_line}"].index("Park Street") -
         Subway_lines[:"#{@start_line}"].index("#{@start_station}")).abs
-        p "int_first is #{int_first}"
+        # p "int_first is #{int_first}"
         int_second = (Subway_lines[:"#{@stop_line}"].index("#{@stop_station}") -
         Subway_lines[:"#{@stop_line}"].index("Park Street")).abs
-        p "int_second is #{int_second}"
+        # p "int_second is #{int_second}"
         total_stops = (int_first + int_second).abs
         p "Total number of stops for your trip is: #{total_stops}"
       end
