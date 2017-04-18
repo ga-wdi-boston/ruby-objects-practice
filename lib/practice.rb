@@ -27,12 +27,10 @@ module MBTA
         stop2 = 0
         i = 0
         lines.select do |line|
-          line.stations.select do |station|
-          if line.stations[i].name == station1
-            p true
+          line.stations.select do |stations|
+            p line.stations
           end
           i += 1
-          end
         end
       end
 
