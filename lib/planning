@@ -1,0 +1,9 @@
+Set up arrays for each line with stops on each
+Determine the index number of the stop on it's given line
+Check to see if the stops are on the same line
+  If yes, return abs value of difference in index numbers
+  If no, calculate absolute value of number of stop to Park on respective line
+    Then sum that number
+
+@mbta = MBTA::Subway::System.new
+    @mbta.stops_between_stations('Red', 'Alewife','Red', 'South Station')
