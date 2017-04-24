@@ -44,10 +44,10 @@ module MBTA
 
           unless @origin_line == @end_line
         distance = (stop[0].val).abs + (start[0].val).abs
-        puts "The distance is #{distance} stops, you have to change lines"
+        puts "\n\tYou got on the MBTA at #{@origin_station} on the #{@origin_line} line and got off at #{@end_station} on the #{@end_line} line. The distance you travaled is #{distance} stops, you had to change lines."
       else
         same_line = (stop[0].val - start[0].val).abs
-        puts "The distance is #{same_line} stops on the same line"
+        puts "\n\tYou got on the MBTA at #{@origin_station} on the #{@origin_line} line and got off at #{@end_station} on the #{@end_line} line. The distance is #{same_line} stops on the same line."
       end
       end
     end
@@ -74,19 +74,18 @@ module MBTA
   end
 end
 
-puts newline = MBTA::Subway::System.new('Orange', 'North Station', 'Red', 'Davis')
+newline = MBTA::Subway::System.new('Orange', 'North Station', 'Red', 'Davis')
 
 newline.stops_between_stations
 
-puts newline2 = MBTA::Subway::System.new('Red', 'Central', 'Orange', 'Back Bay')
+newline2 = MBTA::Subway::System.new('Red', 'Central', 'Orange', 'Back Bay')
 
 newline2.stops_between_stations
 
-puts newline2 = MBTA::Subway::System.new('Orange', 'North Station', 'Orange', 'Back Bay')
+newline2 = MBTA::Subway::System.new('Orange', 'North Station', 'Orange', 'Back Bay')
 
 newline2.stops_between_stations
 
-
-puts newline2 = MBTA::Subway::System.new('Green', 'Hynes', 'Green', 'Park Street')
+newline2 = MBTA::Subway::System.new('Green', 'Hynes', 'Green', 'Park Street')
 
 newline2.stops_between_stations
